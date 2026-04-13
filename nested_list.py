@@ -1,22 +1,21 @@
+#lista annidata (alcuni elementi sono liste)
+
 def count_leaf_nodes(input_list):
-    #terminale
-    if len(input_list) == 0:
+    #condizione terminale
+    if len(input_list) == 0: #esempio banale
         return 0
-    # non terminale
+    #condizione non terminale
     else:
         counter = 0
         for element in input_list:
-            #check if element is a list
-            # if it is a list, we count its elements
-            # with a recursion
+            #controllo se element è una lista
             if type(element) == list:
-                counter += count_leaf_nodes(element)
-            # else, we add +1
+                counter+=count_leaf_nodes(element)
+                #richiama il metodo sulla lista trovata nella lista originaria
             else:
-                counter += 1
-        return counter
-
+                counter+=1 #se non è una lista, aggiungo un elemento ai nodi
+    return counter
 
 if __name__ == '__main__':
     names = ['Adam', ['Bob', ['Chet', 'Cat'], 'Barb', 'Bert'], 'Alex', ['Bea', 'Bill'], 'Ann']
-    print(count_leaf_nodes(names)) #we expect 10
+    print(count_leaf_nodes(names)) #ce ne aspettiamo 10
